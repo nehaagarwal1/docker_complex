@@ -14,3 +14,11 @@ after_success:
   - docker built -t nehaagarwal1/complex-nginx ./nginx
   - docker built -t nehaagarwal1/complex-worker ./worker
 
+#Log in to docker CLI
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+#push images to docker hub
+- docker push nehaagarwal1/complex-client
+- docker push nehaagarwal1/complex-nginx
+- docker push nehaagarwal1/complex-server
+- docker push nehaagarwal1/complex-worker
