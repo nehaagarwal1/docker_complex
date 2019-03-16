@@ -1,0 +1,37 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions":[
+        {
+            "name":"client",
+            "image":"nehaagarwal1/complex-client",
+            "hostname":"client",
+            "essential":false
+        },
+        {
+            "name":"server",
+            "image":"nehaagarwal1/complex-server",
+            "hostname":"api",
+            "essential":false
+        },
+        {
+            "name":"nginx",
+            "image":"nehaagarwal1/complex-nginx",
+            "hostname":"nginx",
+            "essential":true,
+            "portMappings":[
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ]
+        },
+        {
+            "name":"worker",
+            "image":"nehaagarwal1/complex-worker",
+            "hostname":"worker",
+            "essential":false
+        }
+    ],
+    "links": ["client","server"]
+    
+}
