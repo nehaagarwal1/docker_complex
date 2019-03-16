@@ -1,0 +1,16 @@
+sudo:required
+services:
+  - docker
+
+before_install:
+  - docker build -t nehaagarwal1/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run  nehaagarwal1/react-test npm test -- --coverage
+
+after_success:
+  - docker built -t nehaagarwal1/complex-client ./client
+  - docker built -t nehaagarwal1/complex-server ./server
+  - docker built -t nehaagarwal1/complex-nginx ./nginx
+  - docker built -t nehaagarwal1/complex-worker ./worker
+
