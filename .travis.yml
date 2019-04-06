@@ -13,7 +13,7 @@ after_success:
   - docker build -t nehaagarwal1/complex-nginx ./nginx
   - docker build -t nehaagarwal1/complex-server ./server
   - docker build -t nehaagarwal1/complex-worker ./worker
-  # Log in to the docker CLI
+  # Log in to the docker CLI again
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
   - docker push nehaagarwal1/complex-client
