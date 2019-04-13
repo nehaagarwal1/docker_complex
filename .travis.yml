@@ -3,23 +3,23 @@ services:
   - docker
 
 before_install:
-  - docker build -t nehaagarwal1/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t neha1706/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run nehaagarwal1/react-test npm test -- --coverage
+  - docker run neha1706/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t nehaagarwal1/complex-client ./client
-  - docker build -t nehaagarwal1/complex-nginx ./nginx
-  - docker build -t nehaagarwal1/complex-server ./server
-  - docker build -t nehaagarwal1/complex-worker ./worker
+  - docker build -t neha1706/complex-client ./client
+  - docker build -t neha1706/complex-nginx ./nginx
+  - docker build -t neha1706/complex-server ./server
+  - docker build -t neha1706/complex-worker ./worker
   # Log in to the docker CLI again
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push nehaagarwal1/complex-client
-  - docker push nehaagarwal1/complex-nginx
-  - docker push nehaagarwal1/complex-server
-  - docker push nehaagarwal1/complex-worker
+  - docker push neha1706/complex-client
+  - docker push neha1706/complex-nginx
+  - docker push neha1706/complex-server
+  - docker push neha1706/complex-worker
 
 deploy:
     provider: elasticbeanstalk
